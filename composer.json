@@ -6,7 +6,8 @@
     {
         "php":           "^7.1",
         "ext-pdo":       "^7.1",
-        "ext-pdo_mysql": "^7.1"
+        "ext-pdo_mysql": "^7.1",
+        "smadevo/core":  "^1.0"
     },
     "autoload":
     {

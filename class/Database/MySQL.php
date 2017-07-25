@@ -1,12 +1,10 @@
 <?php
-namespace App\PDO;
-
-use PDO;
+namespace App\Database;
 
 /**
  * @inheritDoc
  */
-final class MySQL extends PDO
+final class MySQL extends Base
 {
     /**
      * Constructor.
@@ -17,7 +15,7 @@ final class MySQL extends PDO
      * @param string $username
      * @param string $password
      */
-    final public function __construct(
+    public function __construct(
         string $host,
         string $port,
         string $database,
