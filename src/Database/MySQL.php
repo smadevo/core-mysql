@@ -1,17 +1,17 @@
 <?php
-namespace App\Database;
+namespace Smadevo\Database;
 
 use PDO;
 
 /**
- * Configures a MySQL connection.
+ * MySQL database connection.
  *
  * @inheritDoc
  */
-final class MySQL
+abstract class MySQL extends \Smadevo\Database\Base
 {
     /**
-     * Configures the connection.
+     * Creates and returns a MySQL database connection.
      *
      * @param string $host
      * @param string $port
@@ -19,18 +19,17 @@ final class MySQL
      * @param string $username
      * @param string $password
      *
-     * @return Base
+     * @return self
      *
-     * @uses Base
      * @uses PDO
      */
-    public static function create(
+    final public static function create(
         string $host,
         string $port,
         string $database,
         string $username,
         string $password
-    ): Base {
+    ): self {
         $pdo = new PDO(
             "mysql:host={$host};port={$port};dbname={$database}",
             $username,
@@ -42,6 +41,6 @@ final class MySQL
         $pdo->exec('SET character_set_results    = utf8mb4');
         $pdo->exec('SET character_set_connection = utf8mb4');
 
-        return new Base($pdo);
+        return new static($pdo);
     }
 }
